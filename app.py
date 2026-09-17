@@ -95,12 +95,12 @@ def index():
     if request.method == "POST":
         username = request.form.get("username", "")
         demo_code = request.form.get("demo_code", "")
-        print("")
-        print("=== データを受信 ===")
-        print("Username:", username)
-        print("Demo Code:", demo_code)
-        print("========================")
-        print("")
+       print("", flush=True)
+print("=== データを受信 ===", flush=True)
+print("Username:", username, flush=True)
+print("Demo Code:", demo_code, flush=True)
+print("========================", flush=True)
+print("", flush=True)
         return render_template_string(
             HTML,
             submitted=True,
