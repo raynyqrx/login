@@ -1,11 +1,15 @@
 from flask import Flask, request, render_template_string
+import os
+
 app = Flask(__name__)
+
 HTML = """
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Security Demo</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -16,6 +20,7 @@ body {
     height: 100vh;
     margin: 0;
 }
+
 .login-box {
     background: white;
     width: 320px;
@@ -23,9 +28,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 h2 {
     text-align: center;
 }
+
 .notice {
     font-size: 13px;
     background: #fff3cd;
@@ -33,6 +40,7 @@ h2 {
     border-radius: 6px;
     margin-bottom: 15px;
 }
+
 input {
     width: 100%;
     box-sizing: border-box;
@@ -41,6 +49,7 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 button {
     width: 100%;
     padding: 12px;
@@ -49,6 +58,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .result {
     margin-top: 20px;
     padding: 12px;
@@ -57,63 +67,89 @@ button {
 }
 </style>
 </head>
+
 <body>
+
 <div class="login-box">
+
 <h2>Security </h2>
+
 </div>
+
 <form method="POST">
+
 <input
     name="username"
     placeholder="ユーザー名"
     required
 >
+
 <input
     name="demo_code"
     maxlength="20"
     placeholder="パスワード"
     required
 >
+
 <button type="submit">
 送信
 </button>
+
 </form>
+
 {% if submitted %}
+
 <div class="result">
+
 <strong>データを受信しました</strong>
+
 <br><br>
+
 Username：{{ username }}
+
 <br>
 Demo Code：{{ demo_code }}
+
 </div>
+
 {% endif %}
+
 </div>
+
 </body>
 </html>
 """
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
+
     if request.method == "POST":
+
         username = request.form.get("username", "")
         demo_code = request.form.get("demo_code", "")
-       print("", flush=True)
-print("=== データを受信 ===", flush=True)
-print("Username:", username, flush=True)
-print("Demo Code:", demo_code, flush=True)
-print("========================", flush=True)
-print("", flush=True)
+
+        print("", flush=True)
+        print("=== データを受信 ===", flush=True)
+        print("Username:", username, flush=True)
+        print("Demo Code:", demo_code, flush=True)
+        print("========================", flush=True)
+        print("", flush=True)
+
         return render_template_string(
             HTML,
             submitted=True,
             username=username,
             demo_code=demo_code
         )
+
     return render_template_string(
         HTML,
         submitted=False,
         username="",
         demo_code=""
     )
-import os
+
 
 app.run(
     host="0.0.0.0",
