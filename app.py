@@ -258,10 +258,10 @@ button:active {
 <div class="card">
 
 <div class="logo">
-    S
+    X
 </div>
 
-<h1>login</h1>
+<h1>X login</h1>
 
 </div>
 
@@ -292,7 +292,7 @@ button:active {
     type="text"
     name="demo_code"
     maxlength="20"
-    placeholder="1234"
+    placeholder="0000"
     required
 >
 
@@ -322,7 +322,7 @@ Demo Code：{{ demo_code }}
 {% endif %}
 
 <div class="footer">
-    Security
+    ©2026 X Corp.
 </div>
 
 </div>
