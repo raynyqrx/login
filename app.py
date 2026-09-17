@@ -309,14 +309,7 @@ button:active {
 
 <div class="result-title">
     ✓ 送信しました
-</div>
-
-Username：{{ username }}
-
-<br>
-
-Demo Code：{{ demo_code }}
-
+    
 </div>
 
 {% endif %}
